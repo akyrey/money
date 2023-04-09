@@ -11,8 +11,39 @@ datasource db {
     relationMode = "prisma"
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+enum ExpenseType {
+    EXPENSE
+    INCOME
+    TRANSFER
+    RECEIVABLES
+    PAYABLES
+    SYSTEM
+}
+
+model Category {
+    id        String      @id @default(cuid())
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
+    name      String      @db.VarChar(255)
+    type      ExpenseType
+    order     Int         @db.UnsignedInt
+
+    userId        String
+    subCategories SubCategory[]
+
+    @@index([userId])
+}
+
+model SubCategory {
+    id         String   @id @default(cuid())
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    name       String   @db.VarChar(255)
+    order      Int      @db.UnsignedInt
+    categoryId String
+    userId     String
+
+    category Category @relation(fields: [categoryId], references: [id])
+
+    @@index([categoryId, userId])
 }
