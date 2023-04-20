@@ -4,6 +4,9 @@ dependencies:
   '@clerk/nextjs':
     specifier: ^4.15.0
     version: 4.15.0(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
+  '@clerk/themes':
+    specifier: ^1.6.3
+    version: 1.6.3(react@18.2.0)
   '@prisma/client':
     specifier: ^4.11.0
     version: 4.11.0(prisma@4.11.0)
@@ -158,6 +161,15 @@ packages:
 
   /@clerk/shared@0.15.2(react@18.2.0):
     resolution: {integrity: sha512-g7TnJOqG+M+2PbvBDRBM2gApSmxfLnXslXkfyWPTwyBV6QE2LLNKF2EZds/N+LFwDdp21ow7k8lmq/qEXoZeJw==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@clerk/themes@1.6.3(react@18.2.0):
+    resolution: {integrity: sha512-xkentFnCgyNaDavgqMLb2+4C/fh9PlXg1/QnBPe0vhv8riw20q1gSm3Jy3dG5LiUIAdjLUi34ilt6fufRw/AEQ==}
+    engines: {node: '>=14'}
     peerDependencies:
       react: '>=16'
     dependencies:
