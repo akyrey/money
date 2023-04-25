@@ -1,30 +1,8 @@
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
+import { useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
+import Layout from "~/components/layout";
 import { LoadingPage } from "~/components/loading";
-
-const Header = () => {
-  return (
-    <header className="flex">
-      <SignedIn>
-        <UserButton
-          showName={true}
-          appearance={{ baseTheme: dark, userProfile: { baseTheme: dark } }}
-        />
-      </SignedIn>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-    </header>
-  );
-};
 
 const Home: NextPage = () => {
   const { isLoaded: isUserLoaded } = useUser();
@@ -40,15 +18,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Simply expense tracker app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex h-screen justify-center">
-        <div className="w-full border-x border-slate-400 md:max-w-2xl">
-          <div className="flex border-b border-slate-400 p-4">
-            <div className="flex justify-center">
-              <Header />
-            </div>
-          </div>
-        </div>
-      </main>
+      <Layout />
     </>
   );
 };
